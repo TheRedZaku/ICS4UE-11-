@@ -8,3 +8,4 @@ Documents and files for our culminating project
 - Includes 3 classes, and 2 text files
 - Potentially could have added more, but again, time was really tight
 - Side note: it might have been easier to not have encryption as a separate class, as it caused issues in implementation
+- Made in Intellij, so there might be some minor issues when attempting to run in a different IDE
