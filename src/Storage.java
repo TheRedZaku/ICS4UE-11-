@@ -1,22 +1,14 @@
 public class Storage {
 
-    //attributes
-    private String userInfo;
+    //this class acts similar to the actual user, storing all user data
     private String username;
-    private int encryptiontype;
+    private String date;
+    private String message;
 
-
-    public Storage(String username, int encryptiontype) {
+    public Storage(String username, String message, String date) {
         this.username = username;
-        this.encryptiontype = encryptiontype;
-    }
-
-    public String getUserInfo() {
-        return userInfo;
-    }
-
-    public void setUserInfo(String userInfo) {
-        this.userInfo = userInfo;
+        this.message = message;
+        this.date = date;
     }
 
     public String getUsername() {
@@ -26,4 +18,22 @@ public class Storage {
     public void setUsername(String username) {
         this.username = username;
     }
+
+    public String getMessage() {
+        return message;
+    }
+
+    public void setMessage(String message) {
+        this.message = message;
+    }
+
+    public String getDate() {
+        return date;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
+    }
+
+
 }
