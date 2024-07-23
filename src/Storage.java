@@ -1,29 +1,29 @@
 public class Storage {
 
-    //attributes
-    private String userInfo;
+    //this class acts similar to the actual user, storing all user data
     private String username;
-    private int encryptiontype;
+    private String date;
+    private String message;
 
-
-    public Storage(String username, int encryptiontype) {
+    //constructor
+    public Storage(String username, String message, String date) {
         this.username = username;
-        this.encryptiontype = encryptiontype;
+        this.message = message;
+        this.date = date;
     }
 
-    public String getUserInfo() {
-        return userInfo;
-    }
-
-    public void setUserInfo(String userInfo) {
-        this.userInfo = userInfo;
-    }
-
+    //setters were removed as the ability to change these values isn't an option. Only getters are needed
     public String getUsername() {
         return username;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
+    public String getMessage() {
+        return message;
     }
+
+    public String getDate() {
+        return date;
+    }
+
+
 }
