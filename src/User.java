@@ -102,6 +102,7 @@ public class User {
                 }
             } catch (InputMismatchException ime) {
                 System.out.println("\033[1;91mInput must be an Integer. Please try again.\033[0m");
+                scanner.next();
                 sleep(1000);
                 //end of loop will return to beginning
             }
@@ -197,11 +198,11 @@ public class User {
                 newUser = scanner2.nextLine();//sets a temporary variable to the userInput that they want as their username
                 if (doesAccountExist(newUser) || newUser.length() < 8 || newUser.length() > 20) {
                     System.out.println("\033[1;91mUsername already exists or/is too long. Please try again\033[0m");
+                    sleep(1000);
                     continue;
                 }
                 usernames.add(newUser);//only add usernames here, not yet in the constructor for the object
 //                programUsers.add(new Storage(newUser));
-
                 System.out.println("\033[1;32mAccount created. Returning to main menu...\033[0m");
                 sleep(1000);
                 addToUsers();
@@ -226,6 +227,7 @@ public class User {
         String username;
         do {
             try {
+                flush();
                 if (usernames.isEmpty()) {
                     System.out.println("\033[1;91mNo accounts exist. Please try again.\033[0m");
                     sleep(1000);
@@ -326,6 +328,10 @@ public class User {
                     sleep(1000);
                     mainMenu();
                 }
+                default -> {
+                    System.out.println("\033[1;91mOption not found. Please try again.\033[0m");
+                    sleep(1000);
+                }
             }
         } while (true);
 
@@ -342,6 +348,7 @@ public class User {
      */
     //allows the user to create a new message to be added to the Storage class
     public static void newMessage(String username, int messageIndex) throws InterruptedException {
+        boolean complete = false;
         String message, date;
         do {
             try {
@@ -363,13 +370,14 @@ public class User {
                     programUsers.add(new Storage(username, message, date));//everytime a new message is created, store as a Storage object with 3 fields. Keep username to remember who wrote the message inside the text file
                     System.out.println("\033[1;32mMessage added. Returning to menu...\033[0m");
                     sleep(1000);
+                    complete = true;
                     userDataMenu(username);
                 }
             } catch (InputMismatchException ime) {
                 System.out.println("\033[1;91mInput must be a String. Please try again.\033[0m");
                 sleep(1000);
             }
-        } while (true);
+        } while (!complete);
 
     }
 
