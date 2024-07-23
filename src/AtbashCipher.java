@@ -1,53 +1,72 @@
+
+/**
+ * Class creates an atbash cipher that can encrypt and decrypt 
+ messages
+ * Bugs: None Known
+ *
+ * @author Aarush Behal
+ * @since 2024-07-23
+ * @version 1.0
+ */
 public class AtbashCipher{
-    private String messagetoEncrypt;
-    private String messagetoDecrypt = atbashEncrypt();
+    // Instance variables
+    private String messageToEncrypt;
 
-
-    public AtbashCipher(String messagetoEncrypt){
-        this.messagetoEncrypt = messagetoEncrypt;
+    /**
+     * Constructor method of the class to initialize instance variables
+     */
+    public AtbashCipher(String messageToEncrypt){
+        this.messageToEncrypt = messageToEncrypt;
     }
 
-    public String atbashEncrypt() {
+    /**
+     * Public method that encrypts the message
+     * @return String encrypted message
+     */
+    public String atbashEncrypt(String messageToEncrypt) {
         StringBuilder encryptedMessage = new StringBuilder();
-        for(char letter : messagetoEncrypt.toCharArray()){
+
+        // Loop through each character in the message
+        for(char letter : messageToEncrypt.toCharArray()){
+
+            // Checks if the character is not a space 
             if (letter != ' ') {
+
+                // CHecks if the character is a letter
                 if(Character.isLetter(letter)){
+
+                    // Checks if the character is uppercase letter and encrypts character before adding to StringBuilder
                     if (Character.isUpperCase(letter)) {
                         encryptedMessage.append((char) ('Z' - (letter - 'A')));
-                    } else {
+                    }
+                    // Means the character is lowercase letter and encrypts character before adding to StringBuilder
+                    else {
                         encryptedMessage.append((char) ('z' - (letter - 'a')));
                     }
+
                 }
+                // Otherwise it just adds the letter to the StringBuilder
                 else{
                     encryptedMessage.append(letter);
                 }
+
             }
+            // Means character is a whitespace and adds to the StringBuilder
             else{
                 encryptedMessage.append(" ");
             }
+
         }
+
         return encryptedMessage.toString();
     }
 
-    public String atbashDecrypt(){
-        StringBuilder decryptedMessage = new StringBuilder();
-        for(char letter : messagetoDecrypt.toCharArray()){
-            if (letter != ' ') {
-                if(Character.isLetter(letter)){
-                    if (Character.isUpperCase(letter)) {
-                        decryptedMessage.append((char) ('A' + (letter + 'Z')));
-                    } else {
-                        decryptedMessage.append((char) ('a' + (letter + 'z')));
-                    }
-                }
-                else{
-                    decryptedMessage.append(letter);
-                }
-            }
-            else{
-                decryptedMessage.append(" ");
-            }
-        }
-        return decryptedMessage.toString();
+    /**
+     * Public method that decrypts the message using the encryption     
+     method
+     * @return String decrypted message
+     */
+    public String atbashDecrypt(String messageToDecrypt) {
+        return atbashEncrypt(messageToDecrypt);
     }
 }

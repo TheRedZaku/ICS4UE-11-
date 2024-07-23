@@ -5,34 +5,24 @@ public class Storage {
     private String date;
     private String message;
 
+    //constructor
     public Storage(String username, String message, String date) {
         this.username = username;
         this.message = message;
         this.date = date;
     }
 
+    //setters were removed as the ability to change these values isn't an option. Only getters are needed
     public String getUsername() {
         return username;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
     }
 
     public String getMessage() {
         return message;
     }
 
-    public void setMessage(String message) {
-        this.message = message;
-    }
-
     public String getDate() {
         return date;
-    }
-
-    public void setDate(String date) {
-        this.date = date;
     }
 
 
